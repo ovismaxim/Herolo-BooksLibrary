@@ -2,7 +2,7 @@
 import { Book } from './../../models/book.model';
 import { BookFormComponent } from './../book-form/book-form.component';
 import { Component, OnInit, Output ,EventEmitter, ViewChild } from '@angular/core';
-import { NgbModal, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTypeahead, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime, distinctUntilChanged, filter, merge } from '../../../../node_modules/rxjs/operators';
 import { Subject, Observable } from '../../../../node_modules/rxjs';
 
@@ -38,9 +38,11 @@ export class HeaderComponent implements OnInit {
     const modalRef = this.modalService.open(BookFormComponent);
     modalRef.componentInstance.title = 'Add Book'; 
     modalRef.result.then( (res) =>{
+      if(res !== undefined){
       res.id = '_' + Math.random().toString(36).substr(2, 9); // GENERATOR FOR ID - EACH ID STARTS WITH '_' TO AVOID DUPLICATION WITH GOOGLE IDS -  THEY WITH OUT '_'
       this.newBook.emit(res);
-    })
+    }}, 
+    reason => { if( reason === ModalDismissReasons.BACKDROP_CLICK ){ return; }})
   }
 
   // NOTIFY THE PARENT OF A SEARCH REUEST
