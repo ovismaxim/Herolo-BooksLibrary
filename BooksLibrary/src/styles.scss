@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+@import '~ngx-toastr/toastr.css';
+@import "sass/variables";
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    //background-color: $color-praimry-dark;
+    background-image: linear-gradient(to right top, $color-praimry-light, $color-praimry-dark);
+}
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px){
+    html{
+        font-size: 50%;
+    }
+}

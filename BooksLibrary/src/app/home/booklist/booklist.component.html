@@ -1,0 +1,11 @@
+<div class="booklist">
+  <div class="container">
+      <div *ngIf="load" class="row justify-content-center">
+        <app-book-card *ngFor="let item of appStore.books"  
+                       [bookData]=item 
+                       (bookRemove)="removeBook($event)"
+                       (bookEdit)="editBook($event)">
+        </app-book-card>
+      </div>
+    </div>
+</div>

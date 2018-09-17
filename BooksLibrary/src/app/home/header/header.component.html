@@ -1,0 +1,29 @@
+<header class="header">
+  <ng-template #popContent>
+        * Default list is the newest angular books.<br>
+        * Search results saved in the RxJS store - overwrite last search results.<br>
+        * Each Search will delete all modification made to the list (Edit, Remove, Add).<br>
+        * Results order by newest.
+  </ng-template>
+  <img class="question-sign" src="https://image.flaticon.com/icons/svg/752/752675.svg"
+        [ngbPopover]=popContent  triggers="mouseenter:mouseleave" popoverTitle="Info." container="body" placement="right">
+  <div class="header__box">
+    <h1 class="heading-praimry">
+      <span class="heading-praimry--main">Book</span>
+      <span class="heading-praimry--sub">List</span>
+    </h1>
+    <div class="search">
+      <input #searchTerm 
+             type="text" 
+             class="search__input" 
+             (keydown.enter)="search(searchTerm.value)" 
+             placeholder="Search for a Book">
+      <img  class="search__icon" src="../../../assets/searcher.svg" alt="Search"/>
+    </div>
+    <div class="btn-box">
+      <button class="btn" (click)="addBook()">Add book</button>
+    </div>
+  </div>
+</header>
+
+

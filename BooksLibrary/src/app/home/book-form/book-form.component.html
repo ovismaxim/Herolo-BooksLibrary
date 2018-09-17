@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="bookForm">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text"
+             class="form-control"
+             formControlName="booktitle" >
+    </div>
+    <div class="invalid-error" *ngIf="bookTitle.errors && (bookTitle.dirty || bookTitle.touched)">
+      <p *ngIf="bookTitle.errors.required">Title is Required</p>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date"
+             class="form-control"
+             formControlName="bookdate">
+    </div>
+    <div class="invalid-error" *ngIf="bookDate.errors && (bookDate.dirty || bookDate.touched)">
+      <p *ngIf="bookDate.errors.required">Date is Required</p>
+    </div>
+    <div class="form-group">
+      <label>Author</label>
+      <input type="email"
+             class="form-control"
+             formControlName="bookauthor">
+    </div>
+    <div class="invalid-error" *ngIf="bookAuthor.errors && (bookAuthor.dirty || bookAuthor.touched)">
+      <p *ngIf="bookAuthor.errors.required">Author Name is Required</p>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" [disabled]="!bookForm.valid" class="btn btn-outline-dark" (click)="saveBook()">Save</button>
+</div>
+`

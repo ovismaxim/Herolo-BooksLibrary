@@ -1,0 +1,13 @@
+.invalid-error{
+    width: 100%;
+    margin: 0.25rem 0 0.25rem 0;
+    background-color: #dc354669;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+
+    p{
+        margin-bottom: 0;
+    }
+}

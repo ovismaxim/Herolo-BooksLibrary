@@ -1,0 +1,113 @@
+@import "../../../sass/variables";
+
+@keyframes leaves {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.45);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+.header{
+    height: 40vh;
+    background-image: linear-gradient(to top, rgba($color-praimry-light, .4), rgba($color-praimry-dark, .6)),
+        url('../../../assets/header.jpg');
+    background-position: center;
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 35vh, 0 100%);
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0 2px 0 2px;
+
+    .question-sign{
+        color: $color-white;
+        width: 3rem ;
+        margin: 2rem;
+        animation: leaves 5s ease-in-out infinite alternate;
+    }
+
+    &__box{
+        position: absolute;
+        top:40%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        flex-direction: column;
+        width:80%;
+
+        .heading-praimry{
+            text-transform: uppercase;
+            color:$color-white;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+
+            &--main{
+                font-size: 5rem;
+                padding-right: .8rem;
+            }
+
+            &--sub{
+                font-size: 2rem;
+                background-color: $color-secondry;
+                height: 3rem;
+                padding: .3rem 1rem .5rem 1rem;
+                display: flex;
+                align-content: flex-start;
+            }
+        }
+
+        .search{
+            flex: 0 0 40%;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+
+            &__icon{
+                width: 2rem;
+                height: 5em;
+                border: none;
+                outline: none;
+            }
+            &__input{
+                width:80%;
+                background-color: $color-gray-light;
+                border: none;
+                padding: .5rem 2rem;
+                border-radius: 100px;
+                margin-right: -3.8rem;
+
+                &:focus{
+                    outline:none;
+                    font-size: 110%;
+                }
+            }
+        }
+
+        .btn-box{
+            display: flex;
+            justify-content: center;
+            .btn{
+                width:37%;
+                padding: .5rem 2rem;
+                background-color: $color-secondry;
+                color:$color-white;
+                font-size: 1.5rem;
+                font-weight: 500;
+                border-radius: 100px;
+                text-transform: uppercase;
+                &:focus,
+                &:active{
+                    outline:none;
+                }
+            }
+        }
+    }
+}

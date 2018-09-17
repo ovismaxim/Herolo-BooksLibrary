@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="bookcard">
+        <div class="bookcard__side bookcard__side--front" [style.background-image]="image"></div>
+        <div class="bookcard__side bookcard__side--back">
+            <h4 class="bookcard__side--back__heading">{{bookData.title | lowercase | titlecase | removeNoneEng}}</h4>
+            <p class="bookcard__side--back__pargh">{{bookData.date | date}}</p>
+            <p class="bookcard__side--back__pargh">{{bookData.author}}</p>
+            <button class="btn" (click)="removeBook()">Remove</button>
+            <button class="btn" (click)="editBook()">Edit</button>
+        </div>
+    </div>
+</div>

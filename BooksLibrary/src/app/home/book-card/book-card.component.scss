@@ -1,0 +1,57 @@
+@import "../../../sass/variables";
+
+.bookcard{
+    perspective: 1000px;
+    height: 25rem;
+    width: 18rem;
+    position: relative;
+    margin-bottom: 2rem;
+
+    &__side{       
+        height: 25rem;
+        width: 100%;
+        transition: all .8s;
+        position: absolute;
+        top:0;
+        left:0;
+        backface-visibility: hidden;
+
+        &--front{
+            background-size: cover;
+        }
+
+        &--back{
+            background-image: linear-gradient(to right bottom, $color-praimry-light,$color-praimry-dark);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+
+            h4,p{
+                align-self: center;
+                color: $color-white;
+            }
+
+            &__heading{
+                font-size: 1.3rem;
+                font-weight: 600;
+                text-align: center;
+            }
+            .btn{
+                align-self: center;
+                width: 80%;
+                margin-bottom: 1rem;
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back{
+        transform: rotateY(0deg);
+    }
+}

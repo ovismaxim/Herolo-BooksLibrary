@@ -1,0 +1,8 @@
+<div class="web-padding">
+    <div class="web-padding__contant">
+        <app-header (searched)='searchterm=$event'
+                    (newBook)='newBook=$event'></app-header>
+        <app-booklist [searchfor]=searchterm
+                      [newBook]=newBook></app-booklist>  
+    </div>      
+</div>

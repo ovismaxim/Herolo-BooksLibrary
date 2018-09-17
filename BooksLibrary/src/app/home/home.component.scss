@@ -1,0 +1,11 @@
+@import "/../../sass/variables";
+
+.web-padding{
+    padding: 3rem;
+
+    &__contant{
+        border: 1px solid rgba(0,0,0,0.2);
+        box-shadow: 0 1.5rem 10rem rgba(0,0,0,0.3);
+        border-radius: 10px;
+    }
+}
