@@ -15,15 +15,15 @@ export class BooksService {
 
   // HTTP REQUEST TO GOOGLE BOOK API CONVERT RESPONSE TO BOOK[] 
   getBooks(searchTerm:string){
-    return this.http.get(`${this.url}${searchTerm}orderBy=newest`)
+    return this.http.get(`${this.url}${searchTerm}&&orderBy=newest`)
     .pipe(map( res => { return res['items']
           .map(element => {
             return {
             id: element.id,
             author: element.volumeInfo.hasOwnProperty('authors') ? element.volumeInfo.authors[0] : 'None',
-            title: element.volumeInfo.title,
+            title: element.volumeInfo.title !== undefined ? element.volumeInfo.title : 'None',
             imgUrl: element.volumeInfo.hasOwnProperty("imageLinks") ? element.volumeInfo.imageLinks.thumbnail : '', // CHECK IF PROPERTY IMG EXISTS
-            date: new Date(element.volumeInfo.publishedDate)
+            date: element.volumeInfo.publishedDate !== undefined ? new Date(element.volumeInfo.publishedDate) : 'None'
             }
           })
         })

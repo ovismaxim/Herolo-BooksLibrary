@@ -44,8 +44,13 @@ export class BooklistComponent implements OnChanges,OnInit {
   }
 
   // EDIT BOOK TO APP STORE
-  editBook(book: Book){
-    if(this.uniqueTitle(book.title)){
+  editBook(data: any){
+    let book = data[0];
+    let titleChanged = data[1];
+    if(titleChanged === false){
+      this.store.dispatch(new bookActions.EditBook(book));
+      setTimeout(() => this.toastr.success(`${book.title} was edited successfully`,'Book Was Edited!'));
+    }else if (this.uniqueTitle(book.title)){
       this.store.dispatch(new bookActions.EditBook(book));
       setTimeout(() => this.toastr.success(`${book.title} was edited successfully`,'Book Was Edited!'));
     }else{

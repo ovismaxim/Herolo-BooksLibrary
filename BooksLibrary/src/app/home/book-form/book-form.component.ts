@@ -55,14 +55,15 @@ export class BookFormComponent implements OnInit {
 
   //CLOSE MODEL AND SEND TO PARENT THE NEW BOOK OBJECT
   saveBook(){
-    if(this.bookData){
-      this.activeModal.close({
+    if(this.bookData){  
+      let titleChanged = this.bookTitle.value === this.bookData.title ? false : true;
+      this.activeModal.close([{
         id: this.bookData.id,
         title: this.bookTitle.value,
         author: this.bookAuthor.value,
         date: new Date(this.bookDate.value),
         imgUrl: this.bookData.imgUrl
-      })  
+      },titleChanged])  
     }else{
       this.activeModal.close({
         title: this.bookTitle.value,

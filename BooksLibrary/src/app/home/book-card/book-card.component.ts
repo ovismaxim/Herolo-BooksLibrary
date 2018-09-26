@@ -1,6 +1,5 @@
 import { MessageModelComponent } from './../../shared/message-model/message-model.component';
 import { Book } from './../../models/book.model';
-import { inject } from '@angular/core/testing';
 import { BookFormComponent } from './../book-form/book-form.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
@@ -35,6 +34,10 @@ export class BookCardComponent implements OnInit {
     this.injectImg();
   }
 
+  isDate(){
+    return this.bookData.date === 'None' ?  false : true;
+  }
+
   // NOTIFY PARENT COMPONENT ON REMOVE
   removeBook(){
     const modalRef = this.modalService.open(MessageModelComponent);
@@ -42,8 +45,10 @@ export class BookCardComponent implements OnInit {
     modalRef.componentInstance.message = 'Are you sure you want to delete this Book?'; 
     modalRef.componentInstance.QuestionType = true; 
     modalRef.result.then( (res) =>{
-      if(res !== undefined)
-        this.bookRemove.emit(this.bookData.id);
+      if(res !== undefined){
+        if(res === true)
+          this.bookRemove.emit(this.bookData.id);
+      }
     },
     reason => { if( reason === ModalDismissReasons.BACKDROP_CLICK ){ return; }})
   }
